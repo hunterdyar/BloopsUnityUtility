@@ -25,6 +25,11 @@ public class CameraTransition : MonoBehaviour
 		_blit._transitionMaterial = _transitionMaterial;
 		_blit.enabled = false;
 		
+		
+	}
+
+	private void Start()
+	{
 		if (OpenOnStart)
 		{
 			_blit.enabled = true;

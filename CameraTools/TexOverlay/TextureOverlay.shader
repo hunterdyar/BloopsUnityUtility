@@ -5,6 +5,7 @@
         _MainTex ("Texture", 2D) = "white" {}
         _OverlayTex ("Overlay",2D) = "white" {}
         _Intensity ("Intensity",Range(0,1)) = 0
+        _MultScreen ("Factor",Range(0,1)) = 0.5
     }
     SubShader
     {
@@ -42,10 +43,12 @@
             sampler2D _MainTex;
             sampler2D _OverlayTex;
             float _Intensity;
+            float _MultScreen;
+            
             float overlayChannel(float a,float b)
             {
                 //Overlay function from wikipedia.
-                if(a < 0.5)
+                if(a < _MultScreen)
                     return 2*a*b;
                 else
                 {
@@ -63,9 +66,7 @@
                
                 fixed4 a = tex2D(_MainTex,i.uv);;
                 fixed4 b = tex2D(_OverlayTex,i.uv);
-                
-                
-                return lerp(a,overlayChannel(a,b),_Intensity);
+                return lerp(a,overlayChannel(a,b),_Intensity);       
             }
             ENDCG
         }

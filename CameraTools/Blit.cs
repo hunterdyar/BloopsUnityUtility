@@ -11,7 +11,5 @@ public class Blit : MonoBehaviour
         {
             Graphics.Blit(source, dest, _transitionMaterial);
         }
-        
     }
-    
 }

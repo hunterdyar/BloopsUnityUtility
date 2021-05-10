@@ -16,7 +16,8 @@ namespace Bloops.Utilities
 		// public UnityEvent OnTransitionComplete;
 		// public UityEvent OnTransitionStart;
 		public bool OpenOnStart;
-		private Blit _blit;
+		[Tooltip("You can leave this blank. If your camera has multiple Blit scripts you may want to order them, and set it here manually.")]
+		[SerializeField] private Blit _blit;
 		private int _lerpID;
 		private int _colorID;
 		private Action afterTransitionAction;
@@ -25,11 +26,12 @@ namespace Bloops.Utilities
 		{
 			_lerpID = Shader.PropertyToID("_Lerp");
 			_colorID = Shader.PropertyToID("_Color");
-			_blit = gameObject.AddComponent<Blit>();
+			if (_blit == null)
+			{
+				_blit = gameObject.AddComponent<Blit>();
+			}
 			_blit._transitionMaterial = _transitionMaterial;
 			_blit.enabled = false;
-
-
 		}
 
 		private void Start()
@@ -69,15 +71,12 @@ namespace Bloops.Utilities
 			afterTransitionAction?.Invoke();
 		}
 
-		[ContextMenu("Transition In")]
 		public Coroutine TransitionCloseCurtain()
 		{
 			afterTransitionAction = null;
 			return StartCoroutine(Transition(0, 1, timeForTransition));
 		}
-
-		[ContextMenu("Transition Out")]
-
+		
 		public Coroutine TransitionOpenCurtain()
 		{
 			afterTransitionAction = null;

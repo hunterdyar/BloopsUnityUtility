@@ -19,10 +19,10 @@ IList.RandomItem
 [RequireInterface(typeof(type))] public ScriptableObject something;
 
 ## Event Extensions
-Good ol fashion pre-defined list of like "UnityEventBool : UnityEvent<bool>" for lots of basic/unity types.
+Good ol fashion pre-defined list of like "UnityEventBool : UnityEvent\<bool\>" for lots of basic/unity types.
 
 ## ColorReference
-If I want to use a full ScriptableObjectArchitecture, I will. But if I'm not using that, i most often just need a colorReference for non-gameplay things like UI.
+If I want to use a full ScriptableObjectArchitecture, I will. But if I'm not using that for gameplay, I probably only need a colorReference for non-gameplay things like UI.
 
 ## Camera Utility
 CameraUtility.RectFromTransforms will take a list of transforms and give you a rect of the min and max positions.

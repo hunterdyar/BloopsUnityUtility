@@ -94,5 +94,6 @@ namespace Bloops.Utilities
 			afterTransitionAction = afterAction;
 			return StartCoroutine(Transition(0, 1, timeForTransition));
 		}
+		
 	}
 }

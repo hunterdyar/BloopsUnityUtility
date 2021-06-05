@@ -43,5 +43,32 @@ namespace Bloops.Utilities
 				Camera.main.orthographicSize = r.size.y / 2 * differenceInSize;
 			}
 		}
+		
+		public static Rect RectFromPositions(List<Vector3> positionsToFit, float padding = 0)
+		{
+			float minX = Mathf.Infinity;
+			float maxX = Mathf.NegativeInfinity;
+			float minY = Mathf.Infinity;
+			float maxY = Mathf.NegativeInfinity;
+
+			foreach (var position in positionsToFit)
+			{
+				minX = Mathf.Min(minX, position.x);
+				maxX = Mathf.Max(maxX, position.x);
+				minY = Mathf.Min(minY, position.y);
+				maxY = Mathf.Max(maxY, position.y);
+			}
+
+			minX = minX - padding;
+			maxX = maxX + padding;
+			minY = minY - padding;
+			maxY = maxY + padding;
+			
+			float width = maxX - minX;
+			float height = maxY - minY;
+
+			Rect r = new Rect(minX, minY, width, height);
+			return r;
+		}
 	}
 }

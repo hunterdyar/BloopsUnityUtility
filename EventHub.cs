@@ -2,7 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
 
-namespace Bloops.Utility
+namespace Bloops
 {
 	//its a dead simple event bus.
 	//EventHub is a basic static singleton implementation of an event system. It can't pass data around with the events.

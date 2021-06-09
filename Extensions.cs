@@ -68,8 +68,6 @@ public static class Extensions
       return new Vector2(v.x, v.y);
    }
    
-   //todo: i dont remember if this ever worked...
-
    /// <summary>
    /// Shuffle the list using the Fisher-Yates method.
    /// </summary>
@@ -93,6 +91,14 @@ public static class Extensions
          throw new System.IndexOutOfRangeException("Can't select a random item from an empty list");
       }
       return list[UnityEngine.Random.Range(0, list.Count)];
+   }
+
+   public static void DestroyChildren(this Transform transform)
+   {
+      foreach (Transform child in transform)
+      {
+         Object.Destroy(child.transform);
+      }
    }
 
 }

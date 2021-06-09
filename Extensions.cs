@@ -97,7 +97,7 @@ public static class Extensions
    {
       foreach (Transform child in transform)
       {
-         Object.Destroy(child.transform);
+         Object.Destroy(child.transform.gameObject);
       }
    }
 

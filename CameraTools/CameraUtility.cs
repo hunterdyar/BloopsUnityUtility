@@ -28,11 +28,9 @@ namespace Bloops.Utilities
 			return r;
 		}
 
-		public static void SetCameraToRect(Rect r)
+		public static void SetCameraToRect(Camera cam, Rect r)
 		{
-			var cam = Camera.main;
 			cam.transform.position = new Vector3(r.center.x, r.center.y, -10);
-			
 			float screenRatio = (float)Screen.width / (float)Screen.height;
 			float targetRatio = r.size.x / r.size.y;
 
@@ -42,6 +40,11 @@ namespace Bloops.Utilities
 				float differenceInSize = targetRatio / screenRatio;
 				Camera.main.orthographicSize = r.size.y / 2 * differenceInSize;
 			}
+		}
+
+		public static void SetCameraToRect(Rect r)
+		{
+			SetCameraToRect(Camera.main,r);
 		}
 		
 		public static Rect RectFromPositions(List<Vector3> positionsToFit, float padding = 0)

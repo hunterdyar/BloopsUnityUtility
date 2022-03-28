@@ -14,6 +14,11 @@ public static class Extensions
       return Mathf.Approximately(a,b);
    }
    
+   //BOUNDS extensions
+    public static Vector3 RandomInBounds(this Bounds bounds)
+    {
+        return new Vector3(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y));
+    }
    
    // VECTOR extensions
    public static Vector3 ClampedToCameraScreen(this Vector3 input, Camera camera)
